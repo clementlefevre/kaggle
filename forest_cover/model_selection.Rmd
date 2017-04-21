@@ -1,0 +1,72 @@
+---
+title: "Forest Cover Model selection"
+output: html_notebook
+---
+
+
+
+```{r}
+library(dplyr)
+library(glmnet)
+library(caret)
+library(xgboost)
+
+```
+
+
+```{r}
+
+df_train<-read.csv('data/train.csv')
+df_test<- read.csv('data/test.csv')
+
+df_train$Cover_Type<- as.factor(df_train$Cover_Type)
+
+
+```
+
+
+Resplit the train :
+
+```{r}
+intrain<-createDataPartition(y=df_train$Cover_Type,p=0.7,list=FALSE)
+training<-df_train[intrain,]
+testing<-df_train[-intrain,]
+```
+
+First, let's have a look at how does a standard 
+```{r}
+
+
+# define training control
+train_control <- trainControl(method="cv", number=2)
+#train_control <- trainControl(method="repeatedcv", number=10, repeats=3)
+
+
+
+# train the model
+model <- train(Cover_Type~., data=training,trControl=train_control, method="xgbTree")
+# summarize results
+print(model)
+```
+Evaluate the model performance
+
+```{r}
+
+dat <- sapply( df_test, as.numeric )
+
+prediction<-predict(model$finalModel,as.matrix(dat))
+CM<-table(prediction,testing$Cover_Type)
+CM
+
+sum(diag(CM))/sum(CM)*100
+```
+Compute submission
+```{r}
+prediction_test<-predict(model$finalModel,newdata = as.matrix(df_test))
+length(prediction_test)
+df_test$Cover_Type<-prediction_test
+df_submission<- df_test %>% select(Id,Cover_Type)
+head(df_submission)
+write.csv(df_submission,'submission3.csv',row.names=FALSE)
+```
+
