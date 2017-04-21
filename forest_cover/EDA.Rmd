@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(GGally)
+library(ggcorrplot)
+library(FSelector)
+
+
+```
+
+
+```{r}
+df<- read.csv('data/train.csv')
+
+str(df)
+table(df$Cover_Type)
+
+```
+
+
+```{r}
+table(df$Cover_Type)
+```
+```{r}
+soil.cols<- grep('Soil_Type',colnames(df),value = T)
+# df$Soil.all<-df%>% select(one_of(Soil_col)) %>% rowwise %>% rowSums()
+# range(df$Soil.all)
+```
+```{r}
+ggplot(df,aes(df$Horizontal_Distance_To_Roadways,df$Elevation,col=factor(df$Cover_Type)))+ geom_point(alpha=0.4)
+
+```
+
+```{r}
+df<- df %>% select(-one_of(c(soil.cols,"Id")))
+
+df_no_na<-df %>% na.omit()
+
+head(df_no_na)
+corr <- round(cor(df_no_na),3)
+ggcorrplot(corr, hc.order = TRUE, 
+           type = "lower", 
+           lab = TRUE, 
+           lab_size = 3, 
+           method="circle", 
+           colors = c("tomato2", "white", "springgreen3"), 
+           title="Correlogram of Selected variables", 
+           ggtheme=theme_bw)
+```
+
+```{r}
+chi.squared(Cover_Type~.,data=df)
+```
+
