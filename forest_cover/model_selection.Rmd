@@ -17,44 +17,46 @@ library(xgboost)
 ```{r}
 
 df_train<-read.csv('data/train.csv')
-df_test<- read.csv('data/test.csv')
+#df_test<- read.csv('data/test.csv')
+#test_matrix<-dget('data/test_redux.r')
 
-df_train$Cover_Type<- as.factor(df_train$Cover_Type)
 
+# convert target to factor to activate classification in caret train method :
+df_train$Cover_Type<-as.factor(df_train$Cover_Type)
 
 ```
 
-
-Resplit the train :
-
+#### Resplit the train :
 ```{r}
 intrain<-createDataPartition(y=df_train$Cover_Type,p=0.7,list=FALSE)
 training<-df_train[intrain,]
 testing<-df_train[-intrain,]
 ```
 
-First, let's have a look at how does a standard 
-```{r}
+Hyperparameters :
 
+```{r}
+# set up the cross-validated hyper-parameter search
+xgb_grid_1 = expand.grid(nrounds=20, max_depth=2, eta=0.1, gamma=1, colsample_bytree=0.4, min_child_weight=1, subsample = 1)
+```
+
+
+Train the 
+```{r}
 
 # define training control
 train_control <- trainControl(method="cv", number=2)
 #train_control <- trainControl(method="repeatedcv", number=10, repeats=3)
 
-
-
 # train the model
-model <- train(Cover_Type~., data=training,trControl=train_control, method="xgbTree")
+model <- train(Cover_Type~.,data=training,trControl=train_control, method="xgbTree",tuneGrid=xgb_grid_1)
 # summarize results
 print(model)
 ```
-Evaluate the model performance
+Evaluate the model performance on the testing set :
 
 ```{r}
-
-dat <- sapply( df_test, as.numeric )
-
-prediction<-predict(model$finalModel,as.matrix(dat))
+prediction<-predict(model,newdata = testing)
 CM<-table(prediction,testing$Cover_Type)
 CM
 
@@ -62,7 +64,7 @@ sum(diag(CM))/sum(CM)*100
 ```
 Compute submission
 ```{r}
-prediction_test<-predict(model$finalModel,newdata = as.matrix(df_test))
+prediction_test<-predict(model,newdata = test_matrix)
 length(prediction_test)
 df_test$Cover_Type<-prediction_test
 df_submission<- df_test %>% select(Id,Cover_Type)

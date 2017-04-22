@@ -174,61 +174,27 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZ2xtbmV0KVxubGlicmFyeShjYXJldClcbmxpYnJhcnkoeGdib29zdClcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)
+library(glmnet)
+library(caret)
+library(xgboost)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
-<pre><code>
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnbG1uZXQpXG5gYGAifQ== -->
-<pre class="r"><code>library(glmnet)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNYXRyaXhcbkxvYWRpbmcgcmVxdWlyZWQgcGFja2FnZTogZm9yZWFjaFxuZm9yZWFjaDogc2ltcGxlLCBzY2FsYWJsZSBwYXJhbGxlbCBwcm9ncmFtbWluZyBmcm9tIFJldm9sdXRpb24gQW5hbHl0aWNzXG5Vc2UgUmV2b2x1dGlvbiBSIGZvciBzY2FsYWJpbGl0eSwgZmF1bHQgdG9sZXJhbmNlIGFuZCBtb3JlLlxuaHR0cDovL3d3dy5yZXZvbHV0aW9uYW5hbHl0aWNzLmNvbVxuTG9hZGVkIGdsbW5ldCAyLjAtNVxuIn0= -->
-<pre><code>Loading required package: Matrix
-Loading required package: foreach
-foreach: simple, scalable parallel programming from Revolution Analytics
-Use Revolution R for scalability, fault tolerance and more.
-http://www.revolutionanalytics.com
-Loaded glmnet 2.0-5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmBgYCJ9 -->
-<pre class="r"><code>library(caret)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsYXR0aWNlXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGdncGxvdDJcbiJ9 -->
-<pre><code>Loading required package: lattice
-Loading required package: ggplot2</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh4Z2Jvb3N0KVxuYGBgIn0= -->
-<pre class="r"><code>library(xgboost)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYeGdib29zdOKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmRwbHly4oCZOlxuXG4gICAgc2xpY2VcbiJ9 -->
-<pre><code>
-Attaching package: ‘xgboost’
-
-The following object is masked from ‘package:dplyr’:
-
-    slice</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpXG5kZl90ZXN0PC0gcmVhZC5jc3YoJ2RhdGEvdGVzdC5jc3YnKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpXG4jZGZfdGVzdDwtIHJlYWQuY3N2KCdkYXRhL3Rlc3QuY3N2JylcbiN0ZXN0X21hdHJpeDwtZGdldCgnZGF0YS90ZXN0X3JlZHV4LnInKVxuIyBjb252ZXJ0IHRhcmdldCB0byBmYWN0b3IgdG8gYWN0aXZhdGUgY2xhc3NpZmljYXRpb24gaW4gY2FyZXQgdHJhaW4gbWV0aG9kIDpcbmRmX3RyYWluJENvdmVyX1R5cGU8LWFzLmZhY3RvcihkZl90cmFpbiRDb3Zlcl9UeXBlKVxuYGBgIn0= -->
 <pre class="r"><code>df_train&lt;-read.csv('data/train.csv')
-df_test&lt;- read.csv('data/test.csv')</code></pre>
+#df_test&lt;- read.csv('data/test.csv')
+#test_matrix&lt;-dget('data/test_redux.r')
+# convert target to factor to activate classification in caret train method :
+df_train$Cover_Type&lt;-as.factor(df_train$Cover_Type)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Resplit the train :</p>
+<div id="resplit-the-train" class="section level4">
+<h4>Resplit the train :</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW50cmFpbjwtY3JlYXRlRGF0YVBhcnRpdGlvbih5PWRmX3RyYWluJENvdmVyX1R5cGUscD0wLjcsbGlzdD1GQUxTRSlcbnRyYWluaW5nPC1kZl90cmFpbltpbnRyYWluLF1cbnRlc3Rpbmc8LWRmX3RyYWluWy1pbnRyYWluLF1cbmBgYCJ9 -->
@@ -238,35 +204,28 @@ testing&lt;-df_train[-intrain,]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>First, let’s have a look at how does a standard</p>
+<p>Hyperparameters :</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbFxudHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwiY3ZcIiwgbnVtYmVyPTIpXG4jdHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwicmVwZWF0ZWRjdlwiLCBudW1iZXI9MTAsIHJlcGVhdHM9MylcbiMgdHJhaW4gdGhlIG1vZGVsXG5tb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sIGRhdGE9dHJhaW5pbmcsdHJDb250cm9sPXRyYWluX2NvbnRyb2wsIG1ldGhvZD1cInhnYlRyZWVcIilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzZXQgdXAgdGhlIGNyb3NzLXZhbGlkYXRlZCBoeXBlci1wYXJhbWV0ZXIgc2VhcmNoXG54Z2JfZ3JpZF8xID0gZXhwYW5kLmdyaWQobnJvdW5kcz0yMCwgbWF4X2RlcHRoPTIsIGV0YT0wLjEsIGdhbW1hPTEsIGNvbHNhbXBsZV9ieXRyZWU9MC40LCBtaW5fY2hpbGRfd2VpZ2h0PTEsIHN1YnNhbXBsZSA9IDEpXG5gYGAifQ== -->
+<pre class="r"><code># set up the cross-validated hyper-parameter search
+xgb_grid_1 = expand.grid(nrounds=20, max_depth=2, eta=0.1, gamma=1, colsample_bytree=0.4, min_child_weight=1, subsample = 1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Train the</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbFxudHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwiY3ZcIiwgbnVtYmVyPTIpXG4jdHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwicmVwZWF0ZWRjdlwiLCBudW1iZXI9MTAsIHJlcGVhdHM9MylcbiMgdHJhaW4gdGhlIG1vZGVsXG5tb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sZGF0YT10cmFpbmluZyx0ckNvbnRyb2w9dHJhaW5fY29udHJvbCwgbWV0aG9kPVwieGdiVHJlZVwiLHR1bmVHcmlkPXhnYl9ncmlkXzEpXG4jIHN1bW1hcml6ZSByZXN1bHRzXG5wcmludChtb2RlbClcbmBgYCJ9 -->
 <pre class="r"><code># define training control
 train_control &lt;- trainControl(method=&quot;cv&quot;, number=2)
 #train_control &lt;- trainControl(method=&quot;repeatedcv&quot;, number=10, repeats=3)
 # train the model
-model &lt;- train(Cover_Type~., data=training,trControl=train_control, method=&quot;xgbTree&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBwbHlyXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG5Zb3UgaGF2ZSBsb2FkZWQgcGx5ciBhZnRlciBkcGx5ciAtIHRoaXMgaXMgbGlrZWx5IHRvIGNhdXNlIHByb2JsZW1zLlxuSWYgeW91IG5lZWQgZnVuY3Rpb25zIGZyb20gYm90aCBwbHlyIGFuZCBkcGx5ciwgcGxlYXNlIGxvYWQgcGx5ciBmaXJzdCwgdGhlbiBkcGx5cjpcbmxpYnJhcnkocGx5cik7IGxpYnJhcnkoZHBseXIpXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG5cbkF0dGFjaGluZyBwYWNrYWdlOiDigJhwbHly4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0cyBhcmUgbWFza2VkIGZyb20g4oCYcGFja2FnZTpkcGx5cuKAmTpcblxuICAgIGFycmFuZ2UsIGNvdW50LCBkZXNjLCBmYWlsd2l0aCwgaWQsIG11dGF0ZSwgcmVuYW1lLCBzdW1tYXJpc2UsIHN1bW1hcml6ZVxuIn0= -->
-<pre><code>Loading required package: plyr
-----------------------------------------------------------------------------------------------------------------------------------------------------
-You have loaded plyr after dplyr - this is likely to cause problems.
-If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-library(plyr); library(dplyr)
-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-Attaching package: ‘plyr’
-
-The following objects are masked from ‘package:dplyr’:
-
-    arrange, count, desc, failwith, id, mutate, rename, summarise, summarize</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdW1tYXJpemUgcmVzdWx0c1xucHJpbnQobW9kZWwpXG5gYGAifQ== -->
-<pre class="r"><code># summarize results
+model &lt;- train(Cover_Type~.,data=training,trControl=train_control, method=&quot;xgbTree&quot;,tuneGrid=xgb_grid_1)
+# summarize results
 print(model)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiZVh0cmVtZSBHcmFkaWVudCBCb29zdGluZyBcblxuMTA1ODQgc2FtcGxlc1xuICAgNTUgcHJlZGljdG9yc1xuICAgIDcgY2xhc3NlczogJzEnLCAnMicsICczJywgJzQnLCAnNScsICc2JywgJzcnIFxuXG5ObyBwcmUtcHJvY2Vzc2luZ1xuUmVzYW1wbGluZzogQ3Jvc3MtVmFsaWRhdGVkICgyIGZvbGQpIFxuU3VtbWFyeSBvZiBzYW1wbGUgc2l6ZXM6IDUyOTIsIDUyOTIgXG5SZXNhbXBsaW5nIHJlc3VsdHMgYWNyb3NzIHR1bmluZyBwYXJhbWV0ZXJzOlxuXG4gIGV0YSAgbWF4X2RlcHRoICBjb2xzYW1wbGVfYnl0cmVlICBzdWJzYW1wbGUgIG5yb3VuZHMgIEFjY3VyYWN5ICAgS2FwcGEgICAgXG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzAwMzk2OCAgMC42NTA0NjMwXG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzI5NzgwOCAgMC42ODQ3NDQzXG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzQyNjMwNCAgMC42OTk3MzU0XG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNjk4OTc5NiAgMC42NDg4MDk1XG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzI1MTUxMiAgMC42NzkzNDMwXG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuNzQxNzgwMCAgMC42OTg3NDM0XG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNjk2MjM5NiAgMC42NDU2MTI5XG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzIyODgzNiAgMC42NzY2OTc1XG4gIDAuMyAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzM2Mzk0NiAgMC42OTI0NjAzXG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNjk3Mjc4OSAgMC42NDY4MjU0XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzI3NTEzMiAgMC42ODIwOTg4XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzQyNDQxNCAgMC42OTk1MTUwXG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNjk4NjAxNyAgMC42NDgzNjg2XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzI3MTM1MyAgMC42ODE2NTc4XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuNzM5NDE4MCAgMC42OTU5ODc3XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNjk1NzY3MiAgMC42NDUwNjE3XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzIyNDExMiAgMC42NzYxNDY0XG4gIDAuMyAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzM2ODY3MCAgMC42OTMwMTE1XG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzUwMjgzNCAgMC43MDg2NjQwXG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzgwMTM5OCAgMC43NDM0OTY1XG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzkzNDYxOCAgMC43NTkwMzg4XG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzUwMjgzNCAgMC43MDg2NjQwXG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzc3NjgzMyAgMC43NDA2MzA1XG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuNzkxMDA1MyAgMC43NTYxNzI4XG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzQ5MDU1MiAgMC43MDcyMzEwXG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzc0MTg3NSAgMC43MzY1NTIwXG4gIDAuMyAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzg3ODg3NCAgMC43NTI1MzUzXG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzUxNzk1MiAgMC43MTA0Mjc3XG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzc5NTcyOSAgMC43NDI4MzUxXG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzk0OTczNSAgMC43NjA4MDI1XG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzUyOTI4OSAgMC43MTE3NTA0XG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzgzNzMwMiAgMC43NDc2ODUyXG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuNzk4NDY5NCAgMC43NjQ4ODEwXG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzQ3ODI2OSAgMC43MDU3OTgxXG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzc3Mzk5OCAgMC43NDAyOTk4XG4gIDAuMyAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzkwNTMyOSAgMC43NTU2MjE3XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzgwMTM5OCAgMC43NDM0OTY1XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuODA0MTM4MyAgMC43NzE0OTQ3XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuODE0NjI1OSAgMC43ODM3MzAyXG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzg2Mzc1NyAgMC43NTA3NzE2XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuODA4OTU2OSAgMC43NzcxMTY0XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuODIwMzg5MyAgMC43OTA0NTQxXG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzc2OTI3NCAgMC43Mzk3NDg3XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuODA1NDYxMSAgMC43NzMwMzc5XG4gIDAuMyAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuODE2MTM3NiAgMC43ODU0OTM4XG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzg3Njk4NCAgMC43NTIzMTQ4XG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuODEwNzUyMSAgMC43NzkyMTA4XG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuODE2NjEwMCAgMC43ODYwNDUwXG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzg4ODMyMiAgMC43NTM2Mzc2XG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuODEzNTg2NSAgMC43ODI1MTc2XG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuODE5NTM4OSAgMC43ODk0NjIxXG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzgxMzY4MSAgMC43NDQ5Mjk1XG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuODA3MjU2MiAgMC43NzUxMzIzXG4gIDAuMyAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuODE5OTE2OSAgMC43ODk5MDMwXG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzEyNzc0MCAgMC42NjQ5MDMwXG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzM2ODY3MCAgMC42OTMwMTE1XG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzQ2NTA0MiAgMC43MDQyNTQ5XG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzExNjQwMiAgMC42NjM1ODAyXG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzM4NzU2NiAgMC42OTUyMTYwXG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuNzQ3ODI2OSAgMC43MDU3OTgxXG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzA5MDg5MiAgMC42NjA2MDQxXG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzMyNzA5OCAgMC42ODgxNjE0XG4gIDAuNCAgMSAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzQ2Nzg3NiAgMC43MDQ1ODU1XG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzEzOTA3OCAgMC42NjYyMjU3XG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzM4MDAwOCAgMC42OTQzMzQyXG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzQ5MzM4NiAgMC43MDc1NjE3XG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzExNTQ1NyAgMC42NjM0NzAwXG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzM1NjM4NyAgMC42OTE1Nzg1XG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuNzQ3MjYwMCAgMC43MDUxMzY3XG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzA5MTgzNyAgMC42NjA3MTQzXG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzMzMDg3NyAgMC42ODg2MDIzXG4gIDAuNCAgMSAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzQ0ODk4MCAgMC43MDIzODEwXG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzYyOTQ0MSAgMC43MjM0MzQ3XG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzg2NDcwMSAgMC43NTA4ODE4XG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzk2Njc0MiAgMC43NjI3ODY2XG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzYxNzE1OCAgMC43MjIwMDE4XG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzg2NjU5MSAgMC43NTExMDIzXG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuODAwNDUzNSAgMC43NjcxOTU4XG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzYzNjA1NCAgMC43MjQyMDYzXG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzg0NTgwNSAgMC43NDg2NzcyXG4gIDAuNCAgMiAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzk2NDg1MyAgMC43NjI1NjYxXG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzY3OTUxNiAgMC43MjkyNzY5XG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuNzg5NjgyNSAgMC43NTQ2Mjk2XG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuNzk4NzUyOCAgMC43NjUyMTE2XG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzY0NDU1OCAgMC43MjUxOTg0XG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuNzg4MTcwOCAgMC43NTI4NjYwXG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuODAzMDA0NSAgMC43NzAxNzIwXG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzYyMTg4MiAgMC43MjI1NTI5XG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuNzg1OTk3NyAgMC43NTAzMzA3XG4gIDAuNCAgMiAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuNzk4NDY5NCAgMC43NjQ4ODEwXG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzkyNzA2MCAgMC43NTgxNTcwXG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuODA5NjE4MyAgMC43Nzc4ODgwXG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuODE1NDc2MiAgMC43ODQ3MjIyXG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzk4MTg1OSAgMC43NjQ1NTAzXG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuODE1NzU5NiAgMC43ODUwNTI5XG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuODIwNjcyNyAgMC43OTA3ODQ4XG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzkxMzgzMiAgMC43NTY2MTM4XG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuODEzNDkyMSAgMC43ODI0MDc0XG4gIDAuNCAgMyAgICAgICAgICAwLjYgICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuODI0NjQxMCAgMC43OTU0MTQ1XG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgICA1MCAgICAgIDAuNzkwODE2MyAgMC43NTU5NTI0XG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDEwMCAgICAgIDAuODA3MTYxOCAgMC43NzUwMjIwXG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjUwICAgICAgIDE1MCAgICAgIDAuODEzNTg2NSAgMC43ODI1MTc2XG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgICA1MCAgICAgIDAuNzk4OTQxOCAgMC43NjU0MzIxXG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDEwMCAgICAgIDAuODE4MjE2MiAgMC43ODc5MTg5XG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAwLjc1ICAgICAgIDE1MCAgICAgIDAuODIzNDEyNyAgMC43OTM5ODE1XG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgICA1MCAgICAgIDAuNzk1MDY4MCAgMC43NjA5MTI3XG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDEwMCAgICAgIDAuODE1NDc2MiAgMC43ODQ3MjIyXG4gIDAuNCAgMyAgICAgICAgICAwLjggICAgICAgICAgICAgICAxLjAwICAgICAgIDE1MCAgICAgIDAuODI1MDE4OSAgMC43OTU4NTU0XG5cblR1bmluZyBwYXJhbWV0ZXIgJ2dhbW1hJyB3YXMgaGVsZCBjb25zdGFudCBhdCBhIHZhbHVlIG9mIDBcblR1bmluZyBwYXJhbWV0ZXIgJ21pbl9jaGlsZF93ZWlnaHQnIHdhcyBoZWxkIGNvbnN0YW50IGF0IGEgdmFsdWUgb2YgMVxuQWNjdXJhY3kgd2FzIHVzZWQgdG8gc2VsZWN0IHRoZSBvcHRpbWFsIG1vZGVsIHVzaW5nICB0aGUgbGFyZ2VzdCB2YWx1ZS5cblRoZSBmaW5hbCB2YWx1ZXMgdXNlZCBmb3IgdGhlIG1vZGVsIHdlcmUgbnJvdW5kcyA9IDE1MCwgbWF4X2RlcHRoID0gMywgZXRhID0gMC40LCBnYW1tYSA9IDAsIGNvbHNhbXBsZV9ieXRyZWUgPSAwLjgsIG1pbl9jaGlsZF93ZWlnaHQgPSAxXG4gYW5kIHN1YnNhbXBsZSA9IDEuIFxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoiZVh0cmVtZSBHcmFkaWVudCBCb29zdGluZyBcblxuMTA1ODQgc2FtcGxlc1xuICAgNTUgcHJlZGljdG9yc1xuICAgIDcgY2xhc3NlczogJzEnLCAnMicsICczJywgJzQnLCAnNScsICc2JywgJzcnIFxuXG5ObyBwcmUtcHJvY2Vzc2luZ1xuUmVzYW1wbGluZzogQ3Jvc3MtVmFsaWRhdGVkICgyIGZvbGQpIFxuU3VtbWFyeSBvZiBzYW1wbGUgc2l6ZXM6IDUyOTIsIDUyOTIgXG5SZXNhbXBsaW5nIHJlc3VsdHM6XG5cbiAgQWNjdXJhY3kgICBLYXBwYSAgICBcbiAgMC42ODAwODMxICAwLjYyNjc2MzdcblxuVHVuaW5nIHBhcmFtZXRlciAnbnJvdW5kcycgd2FzIGhlbGQgY29uc3RhbnQgYXQgYSB2YWx1ZSBvZiAyMFxuVHVuaW5nIHBhcmFtZXRlciAnbWF4X2RlcHRoJyB3YXMgaGVsZCBjb25zdGFudCBhdFxuIHBhcmFtZXRlciAnbWluX2NoaWxkX3dlaWdodCcgd2FzIGhlbGQgY29uc3RhbnQgYXQgYSB2YWx1ZSBvZiAxXG5UdW5pbmcgcGFyYW1ldGVyICdzdWJzYW1wbGUnIHdhcyBoZWxkIGNvbnN0YW50IGF0XG4gYSB2YWx1ZSBvZiAxXG4gXG4ifQ== -->
 <pre><code>eXtreme Gradient Boosting 
 
 10584 samples
@@ -276,148 +235,63 @@ print(model)</code></pre>
 No pre-processing
 Resampling: Cross-Validated (2 fold) 
 Summary of sample sizes: 5292, 5292 
-Resampling results across tuning parameters:
+Resampling results:
 
-  eta  max_depth  colsample_bytree  subsample  nrounds  Accuracy   Kappa    
-  0.3  1          0.6               0.50        50      0.7003968  0.6504630
-  0.3  1          0.6               0.50       100      0.7297808  0.6847443
-  0.3  1          0.6               0.50       150      0.7426304  0.6997354
-  0.3  1          0.6               0.75        50      0.6989796  0.6488095
-  0.3  1          0.6               0.75       100      0.7251512  0.6793430
-  0.3  1          0.6               0.75       150      0.7417800  0.6987434
-  0.3  1          0.6               1.00        50      0.6962396  0.6456129
-  0.3  1          0.6               1.00       100      0.7228836  0.6766975
-  0.3  1          0.6               1.00       150      0.7363946  0.6924603
-  0.3  1          0.8               0.50        50      0.6972789  0.6468254
-  0.3  1          0.8               0.50       100      0.7275132  0.6820988
-  0.3  1          0.8               0.50       150      0.7424414  0.6995150
-  0.3  1          0.8               0.75        50      0.6986017  0.6483686
-  0.3  1          0.8               0.75       100      0.7271353  0.6816578
-  0.3  1          0.8               0.75       150      0.7394180  0.6959877
-  0.3  1          0.8               1.00        50      0.6957672  0.6450617
-  0.3  1          0.8               1.00       100      0.7224112  0.6761464
-  0.3  1          0.8               1.00       150      0.7368670  0.6930115
-  0.3  2          0.6               0.50        50      0.7502834  0.7086640
-  0.3  2          0.6               0.50       100      0.7801398  0.7434965
-  0.3  2          0.6               0.50       150      0.7934618  0.7590388
-  0.3  2          0.6               0.75        50      0.7502834  0.7086640
-  0.3  2          0.6               0.75       100      0.7776833  0.7406305
-  0.3  2          0.6               0.75       150      0.7910053  0.7561728
-  0.3  2          0.6               1.00        50      0.7490552  0.7072310
-  0.3  2          0.6               1.00       100      0.7741875  0.7365520
-  0.3  2          0.6               1.00       150      0.7878874  0.7525353
-  0.3  2          0.8               0.50        50      0.7517952  0.7104277
-  0.3  2          0.8               0.50       100      0.7795729  0.7428351
-  0.3  2          0.8               0.50       150      0.7949735  0.7608025
-  0.3  2          0.8               0.75        50      0.7529289  0.7117504
-  0.3  2          0.8               0.75       100      0.7837302  0.7476852
-  0.3  2          0.8               0.75       150      0.7984694  0.7648810
-  0.3  2          0.8               1.00        50      0.7478269  0.7057981
-  0.3  2          0.8               1.00       100      0.7773998  0.7402998
-  0.3  2          0.8               1.00       150      0.7905329  0.7556217
-  0.3  3          0.6               0.50        50      0.7801398  0.7434965
-  0.3  3          0.6               0.50       100      0.8041383  0.7714947
-  0.3  3          0.6               0.50       150      0.8146259  0.7837302
-  0.3  3          0.6               0.75        50      0.7863757  0.7507716
-  0.3  3          0.6               0.75       100      0.8089569  0.7771164
-  0.3  3          0.6               0.75       150      0.8203893  0.7904541
-  0.3  3          0.6               1.00        50      0.7769274  0.7397487
-  0.3  3          0.6               1.00       100      0.8054611  0.7730379
-  0.3  3          0.6               1.00       150      0.8161376  0.7854938
-  0.3  3          0.8               0.50        50      0.7876984  0.7523148
-  0.3  3          0.8               0.50       100      0.8107521  0.7792108
-  0.3  3          0.8               0.50       150      0.8166100  0.7860450
-  0.3  3          0.8               0.75        50      0.7888322  0.7536376
-  0.3  3          0.8               0.75       100      0.8135865  0.7825176
-  0.3  3          0.8               0.75       150      0.8195389  0.7894621
-  0.3  3          0.8               1.00        50      0.7813681  0.7449295
-  0.3  3          0.8               1.00       100      0.8072562  0.7751323
-  0.3  3          0.8               1.00       150      0.8199169  0.7899030
-  0.4  1          0.6               0.50        50      0.7127740  0.6649030
-  0.4  1          0.6               0.50       100      0.7368670  0.6930115
-  0.4  1          0.6               0.50       150      0.7465042  0.7042549
-  0.4  1          0.6               0.75        50      0.7116402  0.6635802
-  0.4  1          0.6               0.75       100      0.7387566  0.6952160
-  0.4  1          0.6               0.75       150      0.7478269  0.7057981
-  0.4  1          0.6               1.00        50      0.7090892  0.6606041
-  0.4  1          0.6               1.00       100      0.7327098  0.6881614
-  0.4  1          0.6               1.00       150      0.7467876  0.7045855
-  0.4  1          0.8               0.50        50      0.7139078  0.6662257
-  0.4  1          0.8               0.50       100      0.7380008  0.6943342
-  0.4  1          0.8               0.50       150      0.7493386  0.7075617
-  0.4  1          0.8               0.75        50      0.7115457  0.6634700
-  0.4  1          0.8               0.75       100      0.7356387  0.6915785
-  0.4  1          0.8               0.75       150      0.7472600  0.7051367
-  0.4  1          0.8               1.00        50      0.7091837  0.6607143
-  0.4  1          0.8               1.00       100      0.7330877  0.6886023
-  0.4  1          0.8               1.00       150      0.7448980  0.7023810
-  0.4  2          0.6               0.50        50      0.7629441  0.7234347
-  0.4  2          0.6               0.50       100      0.7864701  0.7508818
-  0.4  2          0.6               0.50       150      0.7966742  0.7627866
-  0.4  2          0.6               0.75        50      0.7617158  0.7220018
-  0.4  2          0.6               0.75       100      0.7866591  0.7511023
-  0.4  2          0.6               0.75       150      0.8004535  0.7671958
-  0.4  2          0.6               1.00        50      0.7636054  0.7242063
-  0.4  2          0.6               1.00       100      0.7845805  0.7486772
-  0.4  2          0.6               1.00       150      0.7964853  0.7625661
-  0.4  2          0.8               0.50        50      0.7679516  0.7292769
-  0.4  2          0.8               0.50       100      0.7896825  0.7546296
-  0.4  2          0.8               0.50       150      0.7987528  0.7652116
-  0.4  2          0.8               0.75        50      0.7644558  0.7251984
-  0.4  2          0.8               0.75       100      0.7881708  0.7528660
-  0.4  2          0.8               0.75       150      0.8030045  0.7701720
-  0.4  2          0.8               1.00        50      0.7621882  0.7225529
-  0.4  2          0.8               1.00       100      0.7859977  0.7503307
-  0.4  2          0.8               1.00       150      0.7984694  0.7648810
-  0.4  3          0.6               0.50        50      0.7927060  0.7581570
-  0.4  3          0.6               0.50       100      0.8096183  0.7778880
-  0.4  3          0.6               0.50       150      0.8154762  0.7847222
-  0.4  3          0.6               0.75        50      0.7981859  0.7645503
-  0.4  3          0.6               0.75       100      0.8157596  0.7850529
-  0.4  3          0.6               0.75       150      0.8206727  0.7907848
-  0.4  3          0.6               1.00        50      0.7913832  0.7566138
-  0.4  3          0.6               1.00       100      0.8134921  0.7824074
-  0.4  3          0.6               1.00       150      0.8246410  0.7954145
-  0.4  3          0.8               0.50        50      0.7908163  0.7559524
-  0.4  3          0.8               0.50       100      0.8071618  0.7750220
-  0.4  3          0.8               0.50       150      0.8135865  0.7825176
-  0.4  3          0.8               0.75        50      0.7989418  0.7654321
-  0.4  3          0.8               0.75       100      0.8182162  0.7879189
-  0.4  3          0.8               0.75       150      0.8234127  0.7939815
-  0.4  3          0.8               1.00        50      0.7950680  0.7609127
-  0.4  3          0.8               1.00       100      0.8154762  0.7847222
-  0.4  3          0.8               1.00       150      0.8250189  0.7958554
+  Accuracy   Kappa    
+  0.6800831  0.6267637
 
-Tuning parameter 'gamma' was held constant at a value of 0
-Tuning parameter 'min_child_weight' was held constant at a value of 1
-Accuracy was used to select the optimal model using  the largest value.
-The final values used for the model were nrounds = 150, max_depth = 3, eta = 0.4, gamma = 0, colsample_bytree = 0.8, min_child_weight = 1
- and subsample = 1. </code></pre>
+Tuning parameter 'nrounds' was held constant at a value of 20
+Tuning parameter 'max_depth' was held constant at
+ parameter 'min_child_weight' was held constant at a value of 1
+Tuning parameter 'subsample' was held constant at
+ a value of 1
+ </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Evaluate the model performance</p>
+<p>Evaluate the model performance on the testing set :</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0IDwtIHNhcHBseSggZGZfdGVzdCwgYXMubnVtZXJpYyApXG5wcmVkaWN0aW9uPC1wcmVkaWN0KG1vZGVsJGZpbmFsTW9kZWwsYXMubWF0cml4KGRhdCkpXG5DTTwtdGFibGUocHJlZGljdGlvbix0ZXN0aW5nJENvdmVyX1R5cGUpXG5gYGAifQ== -->
-<pre class="r"><code>dat &lt;- sapply( df_test, as.numeric )
-prediction&lt;-predict(model$finalModel,as.matrix(dat))
-CM&lt;-table(prediction,testing$Cover_Type)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdGlvbjwtcHJlZGljdChtb2RlbCxuZXdkYXRhID0gdGVzdGluZylcbkNNPC10YWJsZShwcmVkaWN0aW9uLHRlc3RpbmckQ292ZXJfVHlwZSlcbkNNXG5gYGAifQ== -->
+<pre class="r"><code>prediction&lt;-predict(model,newdata = testing)
+CM&lt;-table(prediction,testing$Cover_Type)
+CM</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gdGFibGUocHJlZGljdGlvbiwgdGVzdGluZyRDb3Zlcl9UeXBlKSA6IFxuICBhbGwgYXJndW1lbnRzIG11c3QgaGF2ZSB0aGUgc2FtZSBsZW5ndGhcbiJ9 -->
-<pre><code>Error in table(prediction, testing$Cover_Type) : 
-  all arguments must have the same length</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgIFxucHJlZGljdGlvbiAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDdcbiAgICAgICAgIDEgNDM1IDIyNCAgIDAgICAwICAgOCAgIDAgIDU4XG4gICAgICAgICAyICA3MiAyMjYgICAwICAgMCAgNzIgICAxICAgMFxuICAgICAgICAgMyAgIDAgIDE4IDM0MCAgMTMgIDIxIDE2NCAgIDBcbiAgICAgICAgIDQgICAwICAgMCAxMzQgNjIzICAgMCAgODcgICAwXG4gICAgICAgICA1ICA0MyAxNDggIDI5ICAgMCA1MTMgIDUwICAgMlxuICAgICAgICAgNiAgIDMgIDE5IDE0NSAgMTIgIDM0IDM0NiAgIDBcbiAgICAgICAgIDcgIDk1ICAxMyAgIDAgICAwICAgMCAgIDAgNTg4XG4ifQ== -->
+<pre><code>          
+prediction   1   2   3   4   5   6   7
+         1 435 224   0   0   8   0  58
+         2  72 226   0   0  72   1   0
+         3   0  18 340  13  21 164   0
+         4   0   0 134 623   0  87   0
+         5  43 148  29   0 513  50   2
+         6   3  19 145  12  34 346   0
+         7  95  13   0   0   0   0 588</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGRpYWcoQ00pKS9zdW0oQ00pKjEwMFxuYGBgIn0= -->
+<pre class="r"><code>sum(diag(CM))/sum(CM)*100</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDY3LjcwMjgyXG4ifQ== -->
+<pre><code>[1] 67.70282</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Compute submission</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsLG5ld2RhdGEgPSB0ZXN0X21hdHJpeClcbmBgYCJ9 -->
+<pre class="r"><code>prediction_test&lt;-predict(model,newdata = test_matrix)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcHJlZGljdC50cmFpbihtb2RlbCwgbmV3ZGF0YSA9IHRlc3RfbWF0cml4KSA6IFxuICBvYmplY3QgJ3Rlc3RfbWF0cml4JyBub3QgZm91bmRcbiJ9 -->
+<pre><code>Error in predict.train(model, newdata = test_matrix) : 
+  object 'test_matrix' not found</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRm9yZXN0IENvdmVyIE1vZGVsIHNlbGVjdGlvbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCgpgYGB7cn0KbGlicmFyeShkcGx5cikKbGlicmFyeShnbG1uZXQpCmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoeGdib29zdCkKCmBgYAoKCmBgYHtyfQoKZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpCmRmX3Rlc3Q8LSByZWFkLmNzdignZGF0YS90ZXN0LmNzdicpCgpkZl90cmFpbiRDb3Zlcl9UeXBlPC0gYXMuZmFjdG9yKGRmX3RyYWluJENvdmVyX1R5cGUpCgoKYGBgCgoKUmVzcGxpdCB0aGUgdHJhaW4gOgoKYGBge3J9CmludHJhaW48LWNyZWF0ZURhdGFQYXJ0aXRpb24oeT1kZl90cmFpbiRDb3Zlcl9UeXBlLHA9MC43LGxpc3Q9RkFMU0UpCnRyYWluaW5nPC1kZl90cmFpbltpbnRyYWluLF0KdGVzdGluZzwtZGZfdHJhaW5bLWludHJhaW4sXQpgYGAKCkZpcnN0LCBsZXQncyBoYXZlIGEgbG9vayBhdCBob3cgZG9lcyBhIHN0YW5kYXJkIApgYGB7cn0KCgojIGRlZmluZSB0cmFpbmluZyBjb250cm9sCnRyYWluX2NvbnRyb2wgPC0gdHJhaW5Db250cm9sKG1ldGhvZD0iY3YiLCBudW1iZXI9MikKI3RyYWluX2NvbnRyb2wgPC0gdHJhaW5Db250cm9sKG1ldGhvZD0icmVwZWF0ZWRjdiIsIG51bWJlcj0xMCwgcmVwZWF0cz0zKQoKCgojIHRyYWluIHRoZSBtb2RlbAptb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sIGRhdGE9dHJhaW5pbmcsdHJDb250cm9sPXRyYWluX2NvbnRyb2wsIG1ldGhvZD0ieGdiVHJlZSIpCiMgc3VtbWFyaXplIHJlc3VsdHMKcHJpbnQobW9kZWwpCmBgYApFdmFsdWF0ZSB0aGUgbW9kZWwgcGVyZm9ybWFuY2UKCmBgYHtyfQoKZGF0IDwtIHNhcHBseSggZGZfdGVzdCwgYXMubnVtZXJpYyApCgpwcmVkaWN0aW9uPC1wcmVkaWN0KG1vZGVsJGZpbmFsTW9kZWwsYXMubWF0cml4KGRhdCkpCkNNPC10YWJsZShwcmVkaWN0aW9uLHRlc3RpbmckQ292ZXJfVHlwZSkKQ00KCnN1bShkaWFnKENNKSkvc3VtKENNKSoxMDAKYGBgCkNvbXB1dGUgc3VibWlzc2lvbgpgYGB7cn0KcHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsJGZpbmFsTW9kZWwsbmV3ZGF0YSA9IGFzLm1hdHJpeChkZl90ZXN0KSkKbGVuZ3RoKHByZWRpY3Rpb25fdGVzdCkKZGZfdGVzdCRDb3Zlcl9UeXBlPC1wcmVkaWN0aW9uX3Rlc3QKZGZfc3VibWlzc2lvbjwtIGRmX3Rlc3QgJT4lIHNlbGVjdChJZCxDb3Zlcl9UeXBlKQpoZWFkKGRmX3N1Ym1pc3Npb24pCndyaXRlLmNzdihkZl9zdWJtaXNzaW9uLCdzdWJtaXNzaW9uMy5jc3YnLHJvdy5uYW1lcz1GQUxTRSkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRm9yZXN0IENvdmVyIE1vZGVsIHNlbGVjdGlvbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCgpgYGB7cn0KbGlicmFyeShkcGx5cikKbGlicmFyeShnbG1uZXQpCmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoeGdib29zdCkKCmBgYAoKCmBgYHtyfQoKZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpCiNkZl90ZXN0PC0gcmVhZC5jc3YoJ2RhdGEvdGVzdC5jc3YnKQojdGVzdF9tYXRyaXg8LWRnZXQoJ2RhdGEvdGVzdF9yZWR1eC5yJykKCgojIGNvbnZlcnQgdGFyZ2V0IHRvIGZhY3RvciB0byBhY3RpdmF0ZSBjbGFzc2lmaWNhdGlvbiBpbiBjYXJldCB0cmFpbiBtZXRob2QgOgpkZl90cmFpbiRDb3Zlcl9UeXBlPC1hcy5mYWN0b3IoZGZfdHJhaW4kQ292ZXJfVHlwZSkKCmBgYAoKIyMjIyBSZXNwbGl0IHRoZSB0cmFpbiA6CmBgYHtyfQppbnRyYWluPC1jcmVhdGVEYXRhUGFydGl0aW9uKHk9ZGZfdHJhaW4kQ292ZXJfVHlwZSxwPTAuNyxsaXN0PUZBTFNFKQp0cmFpbmluZzwtZGZfdHJhaW5baW50cmFpbixdCnRlc3Rpbmc8LWRmX3RyYWluWy1pbnRyYWluLF0KYGBgCgpIeXBlcnBhcmFtZXRlcnMgOgoKYGBge3J9CiMgc2V0IHVwIHRoZSBjcm9zcy12YWxpZGF0ZWQgaHlwZXItcGFyYW1ldGVyIHNlYXJjaAp4Z2JfZ3JpZF8xID0gZXhwYW5kLmdyaWQobnJvdW5kcz0yMCwgbWF4X2RlcHRoPTIsIGV0YT0wLjEsIGdhbW1hPTEsIGNvbHNhbXBsZV9ieXRyZWU9MC40LCBtaW5fY2hpbGRfd2VpZ2h0PTEsIHN1YnNhbXBsZSA9IDEpCmBgYAoKClRyYWluIHRoZSAKYGBge3J9CgojIGRlZmluZSB0cmFpbmluZyBjb250cm9sCnRyYWluX2NvbnRyb2wgPC0gdHJhaW5Db250cm9sKG1ldGhvZD0iY3YiLCBudW1iZXI9MikKI3RyYWluX2NvbnRyb2wgPC0gdHJhaW5Db250cm9sKG1ldGhvZD0icmVwZWF0ZWRjdiIsIG51bWJlcj0xMCwgcmVwZWF0cz0zKQoKIyB0cmFpbiB0aGUgbW9kZWwKbW9kZWwgPC0gdHJhaW4oQ292ZXJfVHlwZX4uLGRhdGE9dHJhaW5pbmcsdHJDb250cm9sPXRyYWluX2NvbnRyb2wsIG1ldGhvZD0ieGdiVHJlZSIsdHVuZUdyaWQ9eGdiX2dyaWRfMSkKIyBzdW1tYXJpemUgcmVzdWx0cwpwcmludChtb2RlbCkKYGBgCkV2YWx1YXRlIHRoZSBtb2RlbCBwZXJmb3JtYW5jZSBvbiB0aGUgdGVzdGluZyBzZXQgOgoKYGBge3J9CnByZWRpY3Rpb248LXByZWRpY3QobW9kZWwsbmV3ZGF0YSA9IHRlc3RpbmcpCkNNPC10YWJsZShwcmVkaWN0aW9uLHRlc3RpbmckQ292ZXJfVHlwZSkKQ00KCnN1bShkaWFnKENNKSkvc3VtKENNKSoxMDAKYGBgCkNvbXB1dGUgc3VibWlzc2lvbgpgYGB7cn0KcHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsLG5ld2RhdGEgPSB0ZXN0X21hdHJpeCkKbGVuZ3RoKHByZWRpY3Rpb25fdGVzdCkKZGZfdGVzdCRDb3Zlcl9UeXBlPC1wcmVkaWN0aW9uX3Rlc3QKZGZfc3VibWlzc2lvbjwtIGRmX3Rlc3QgJT4lIHNlbGVjdChJZCxDb3Zlcl9UeXBlKQpoZWFkKGRmX3N1Ym1pc3Npb24pCndyaXRlLmNzdihkZl9zdWJtaXNzaW9uLCdzdWJtaXNzaW9uMy5jc3YnLHJvdy5uYW1lcz1GQUxTRSkKYGBgCgo=</div>
 
 
 
