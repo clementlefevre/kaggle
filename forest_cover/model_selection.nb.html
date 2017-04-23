@@ -174,12 +174,50 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZ2xtbmV0KVxubGlicmFyeShjYXJldClcbmxpYnJhcnkoeGdib29zdClcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)
-library(glmnet)
-library(caret)
-library(xgboost)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
+<pre><code>
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnbG1uZXQpXG5gYGAifQ== -->
+<pre class="r"><code>library(glmnet)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNYXRyaXhcbkxvYWRpbmcgcmVxdWlyZWQgcGFja2FnZTogZm9yZWFjaFxuZm9yZWFjaDogc2ltcGxlLCBzY2FsYWJsZSBwYXJhbGxlbCBwcm9ncmFtbWluZyBmcm9tIFJldm9sdXRpb24gQW5hbHl0aWNzXG5Vc2UgUmV2b2x1dGlvbiBSIGZvciBzY2FsYWJpbGl0eSwgZmF1bHQgdG9sZXJhbmNlIGFuZCBtb3JlLlxuaHR0cDovL3d3dy5yZXZvbHV0aW9uYW5hbHl0aWNzLmNvbVxuTG9hZGVkIGdsbW5ldCAyLjAtNVxuIn0= -->
+<pre><code>Loading required package: Matrix
+Loading required package: foreach
+foreach: simple, scalable parallel programming from Revolution Analytics
+Use Revolution R for scalability, fault tolerance and more.
+http://www.revolutionanalytics.com
+Loaded glmnet 2.0-5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmBgYCJ9 -->
+<pre class="r"><code>library(caret)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsYXR0aWNlXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGdncGxvdDJcbiJ9 -->
+<pre><code>Loading required package: lattice
+Loading required package: ggplot2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh4Z2Jvb3N0KVxuYGBgIn0= -->
+<pre class="r"><code>library(xgboost)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYeGdib29zdOKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmRwbHly4oCZOlxuXG4gICAgc2xpY2VcbiJ9 -->
+<pre><code>
+Attaching package: ‘xgboost’
+
+The following object is masked from ‘package:dplyr’:
+
+    slice</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -207,45 +245,44 @@ testing&lt;-df_train[-intrain,]</code></pre>
 <p>Hyperparameters :</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzZXQgdXAgdGhlIGNyb3NzLXZhbGlkYXRlZCBoeXBlci1wYXJhbWV0ZXIgc2VhcmNoXG54Z2JfZ3JpZF8xID0gZXhwYW5kLmdyaWQobnJvdW5kcz0yMCwgbWF4X2RlcHRoPTIsIGV0YT0wLjEsIGdhbW1hPTEsIGNvbHNhbXBsZV9ieXRyZWU9MC40LCBtaW5fY2hpbGRfd2VpZ2h0PTEsIHN1YnNhbXBsZSA9IDEpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzZXQgdXAgdGhlIGNyb3NzLXZhbGlkYXRlZCBoeXBlci1wYXJhbWV0ZXIgc2VhcmNoXG54Z2JfZ3JpZF8xID0gZXhwYW5kLmdyaWQobnJvdW5kcz0yMCwgbWF4X2RlcHRoPTIsIGV0YT0wLjEsIGdhbW1hPTEsIGNvbHNhbXBsZV9ieXRyZWU9MC40LCBtaW5fY2hpbGRfd2VpZ2h0PTEsIHN1YnNhbXBsZSA9IDEpXG54Z2JfZ3JpZF8xID0gZXhwYW5kLmdyaWQoXG4gIG5yb3VuZHMgPSAxMDAwLFxuICBldGEgPSBjKDAuMDEsIDAuMDAxLCAwLjAwMDEpLFxuICBtYXhfZGVwdGggPSBjKDIsIDQsIDYsIDgsIDEwKSxcbiAgZ2FtbWEgPSAxLFxuICBjb2xzYW1wbGVfYnl0cmVlPTAuNCwgXG4gIG1pbl9jaGlsZF93ZWlnaHQ9MSwgXG4gIHN1YnNhbXBsZSA9IDFcbilcbmBgYCJ9 -->
 <pre class="r"><code># set up the cross-validated hyper-parameter search
-xgb_grid_1 = expand.grid(nrounds=20, max_depth=2, eta=0.1, gamma=1, colsample_bytree=0.4, min_child_weight=1, subsample = 1)</code></pre>
+xgb_grid_1 = expand.grid(nrounds=20, max_depth=2, eta=0.1, gamma=1, colsample_bytree=0.4, min_child_weight=1, subsample = 1)
+xgb_grid_1 = expand.grid(
+  nrounds = 1000,
+  eta = c(0.01, 0.001, 0.0001),
+  max_depth = c(2, 4, 6, 8, 10),
+  gamma = 1,
+  colsample_bytree=0.4, 
+  min_child_weight=1, 
+  subsample = 1
+)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Train the</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbFxudHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwiY3ZcIiwgbnVtYmVyPTIpXG4jdHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwicmVwZWF0ZWRjdlwiLCBudW1iZXI9MTAsIHJlcGVhdHM9MylcbiMgdHJhaW4gdGhlIG1vZGVsXG5tb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sZGF0YT10cmFpbmluZyx0ckNvbnRyb2w9dHJhaW5fY29udHJvbCwgbWV0aG9kPVwieGdiVHJlZVwiLHR1bmVHcmlkPXhnYl9ncmlkXzEpXG4jIHN1bW1hcml6ZSByZXN1bHRzXG5wcmludChtb2RlbClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbFxudHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwiY3ZcIiwgbnVtYmVyPTIpXG4jdHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwicmVwZWF0ZWRjdlwiLCBudW1iZXI9MTAsIHJlcGVhdHM9MylcbiMgdHJhaW4gdGhlIG1vZGVsXG5tb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sZGF0YT10cmFpbmluZyx0ckNvbnRyb2w9dHJhaW5fY29udHJvbCwgbWV0aG9kPVwieGdiVHJlZVwiLHR1bmVHcmlkPXhnYl9ncmlkXzEpXG5gYGAifQ== -->
 <pre class="r"><code># define training control
 train_control &lt;- trainControl(method=&quot;cv&quot;, number=2)
 #train_control &lt;- trainControl(method=&quot;repeatedcv&quot;, number=10, repeats=3)
 # train the model
-model &lt;- train(Cover_Type~.,data=training,trControl=train_control, method=&quot;xgbTree&quot;,tuneGrid=xgb_grid_1)
-# summarize results
-print(model)</code></pre>
+model &lt;- train(Cover_Type~.,data=training,trControl=train_control, method=&quot;xgbTree&quot;,tuneGrid=xgb_grid_1)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiZVh0cmVtZSBHcmFkaWVudCBCb29zdGluZyBcblxuMTA1ODQgc2FtcGxlc1xuICAgNTUgcHJlZGljdG9yc1xuICAgIDcgY2xhc3NlczogJzEnLCAnMicsICczJywgJzQnLCAnNScsICc2JywgJzcnIFxuXG5ObyBwcmUtcHJvY2Vzc2luZ1xuUmVzYW1wbGluZzogQ3Jvc3MtVmFsaWRhdGVkICgyIGZvbGQpIFxuU3VtbWFyeSBvZiBzYW1wbGUgc2l6ZXM6IDUyOTIsIDUyOTIgXG5SZXNhbXBsaW5nIHJlc3VsdHM6XG5cbiAgQWNjdXJhY3kgICBLYXBwYSAgICBcbiAgMC42ODAwODMxICAwLjYyNjc2MzdcblxuVHVuaW5nIHBhcmFtZXRlciAnbnJvdW5kcycgd2FzIGhlbGQgY29uc3RhbnQgYXQgYSB2YWx1ZSBvZiAyMFxuVHVuaW5nIHBhcmFtZXRlciAnbWF4X2RlcHRoJyB3YXMgaGVsZCBjb25zdGFudCBhdFxuIHBhcmFtZXRlciAnbWluX2NoaWxkX3dlaWdodCcgd2FzIGhlbGQgY29uc3RhbnQgYXQgYSB2YWx1ZSBvZiAxXG5UdW5pbmcgcGFyYW1ldGVyICdzdWJzYW1wbGUnIHdhcyBoZWxkIGNvbnN0YW50IGF0XG4gYSB2YWx1ZSBvZiAxXG4gXG4ifQ== -->
-<pre><code>eXtreme Gradient Boosting 
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBwbHlyXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbllvdSBoYXZlIGxvYWRlZCBwbHlyIGFmdGVyIGRwbHlyIC0gdGhpcyBpcyBsaWtlbHkgdG8gY2F1c2UgcHJvYmxlbXMuXG5JZiB5b3UgbmVlZCBmdW5jdGlvbnMgZnJvbSBib3RoIHBseXIgYW5kIGRwbHlyLCBwbGVhc2UgbG9hZCBwbHlyIGZpcnN0LCB0aGVuIGRwbHlyOlxubGlicmFyeShwbHlyKTsgbGlicmFyeShkcGx5cilcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYcGx5cuKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6ZHBseXLigJk6XG5cbiAgICBhcnJhbmdlLCBjb3VudCwgZGVzYywgZmFpbHdpdGgsIGlkLCBtdXRhdGUsIHJlbmFtZSwgc3VtbWFyaXNlLCBzdW1tYXJpemVcbiJ9 -->
+<pre><code>Loading required package: plyr
+---------------------------------------------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+---------------------------------------------------------------------------------------------------------------------
 
-10584 samples
-   55 predictors
-    7 classes: '1', '2', '3', '4', '5', '6', '7' 
+Attaching package: ‘plyr’
 
-No pre-processing
-Resampling: Cross-Validated (2 fold) 
-Summary of sample sizes: 5292, 5292 
-Resampling results:
+The following objects are masked from ‘package:dplyr’:
 
-  Accuracy   Kappa    
-  0.6800831  0.6267637
-
-Tuning parameter 'nrounds' was held constant at a value of 20
-Tuning parameter 'max_depth' was held constant at
- parameter 'min_child_weight' was held constant at a value of 1
-Tuning parameter 'subsample' was held constant at
- a value of 1
- </code></pre>
+    arrange, count, desc, failwith, id, mutate, rename, summarise, summarize</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -257,22 +294,22 @@ Tuning parameter 'subsample' was held constant at
 CM&lt;-table(prediction,testing$Cover_Type)
 CM</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgIFxucHJlZGljdGlvbiAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDdcbiAgICAgICAgIDEgNDM1IDIyNCAgIDAgICAwICAgOCAgIDAgIDU4XG4gICAgICAgICAyICA3MiAyMjYgICAwICAgMCAgNzIgICAxICAgMFxuICAgICAgICAgMyAgIDAgIDE4IDM0MCAgMTMgIDIxIDE2NCAgIDBcbiAgICAgICAgIDQgICAwICAgMCAxMzQgNjIzICAgMCAgODcgICAwXG4gICAgICAgICA1ICA0MyAxNDggIDI5ICAgMCA1MTMgIDUwICAgMlxuICAgICAgICAgNiAgIDMgIDE5IDE0NSAgMTIgIDM0IDM0NiAgIDBcbiAgICAgICAgIDcgIDk1ICAxMyAgIDAgICAwICAgMCAgIDAgNTg4XG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgIFxucHJlZGljdGlvbiAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDdcbiAgICAgICAgIDEgNTA3ICA5NSAgIDAgICAwICAgMCAgIDAgIDI2XG4gICAgICAgICAyICA5NSA0NzUgICA5ICAgMCAgMTcgICA1ICAgMFxuICAgICAgICAgMyAgIDAgIDExIDU0NCAgIDkgICA3ICA0OSAgIDBcbiAgICAgICAgIDQgICAwICAgMCAgMzAgNjMzICAgMCAgMTIgICAwXG4gICAgICAgICA1ICAxMCAgNDkgIDEwICAgMCA2MTUgICA0ICAgMFxuICAgICAgICAgNiAgIDEgIDEyICA1NSAgIDYgICA5IDU3OCAgIDBcbiAgICAgICAgIDcgIDM1ICAgNiAgIDAgICAwICAgMCAgIDAgNjIyXG4ifQ== -->
 <pre><code>          
 prediction   1   2   3   4   5   6   7
-         1 435 224   0   0   8   0  58
-         2  72 226   0   0  72   1   0
-         3   0  18 340  13  21 164   0
-         4   0   0 134 623   0  87   0
-         5  43 148  29   0 513  50   2
-         6   3  19 145  12  34 346   0
-         7  95  13   0   0   0   0 588</code></pre>
+         1 507  95   0   0   0   0  26
+         2  95 475   9   0  17   5   0
+         3   0  11 544   9   7  49   0
+         4   0   0  30 633   0  12   0
+         5  10  49  10   0 615   4   0
+         6   1  12  55   6   9 578   0
+         7  35   6   0   0   0   0 622</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGRpYWcoQ00pKS9zdW0oQ00pKjEwMFxuYGBgIn0= -->
 <pre class="r"><code>sum(diag(CM))/sum(CM)*100</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDY3LjcwMjgyXG4ifQ== -->
-<pre><code>[1] 67.70282</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDg3LjYxMDIzXG4ifQ== -->
+<pre><code>[1] 87.61023</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -291,7 +328,7 @@ prediction   1   2   3   4   5   6   7
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRm9yZXN0IENvdmVyIE1vZGVsIHNlbGVjdGlvbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCgpgYGB7cn0KbGlicmFyeShkcGx5cikKbGlicmFyeShnbG1uZXQpCmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoeGdib29zdCkKCmBgYAoKCmBgYHtyfQoKZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpCiNkZl90ZXN0PC0gcmVhZC5jc3YoJ2RhdGEvdGVzdC5jc3YnKQojdGVzdF9tYXRyaXg8LWRnZXQoJ2RhdGEvdGVzdF9yZWR1eC5yJykKCgojIGNvbnZlcnQgdGFyZ2V0IHRvIGZhY3RvciB0byBhY3RpdmF0ZSBjbGFzc2lmaWNhdGlvbiBpbiBjYXJldCB0cmFpbiBtZXRob2QgOgpkZl90cmFpbiRDb3Zlcl9UeXBlPC1hcy5mYWN0b3IoZGZfdHJhaW4kQ292ZXJfVHlwZSkKCmBgYAoKIyMjIyBSZXNwbGl0IHRoZSB0cmFpbiA6CmBgYHtyfQppbnRyYWluPC1jcmVhdGVEYXRhUGFydGl0aW9uKHk9ZGZfdHJhaW4kQ292ZXJfVHlwZSxwPTAuNyxsaXN0PUZBTFNFKQp0cmFpbmluZzwtZGZfdHJhaW5baW50cmFpbixdCnRlc3Rpbmc8LWRmX3RyYWluWy1pbnRyYWluLF0KYGBgCgpIeXBlcnBhcmFtZXRlcnMgOgoKYGBge3J9CiMgc2V0IHVwIHRoZSBjcm9zcy12YWxpZGF0ZWQgaHlwZXItcGFyYW1ldGVyIHNlYXJjaAp4Z2JfZ3JpZF8xID0gZXhwYW5kLmdyaWQobnJvdW5kcz0yMCwgbWF4X2RlcHRoPTIsIGV0YT0wLjEsIGdhbW1hPTEsIGNvbHNhbXBsZV9ieXRyZWU9MC40LCBtaW5fY2hpbGRfd2VpZ2h0PTEsIHN1YnNhbXBsZSA9IDEpCmBgYAoKClRyYWluIHRoZSAKYGBge3J9CgojIGRlZmluZSB0cmFpbmluZyBjb250cm9sCnRyYWluX2NvbnRyb2wgPC0gdHJhaW5Db250cm9sKG1ldGhvZD0iY3YiLCBudW1iZXI9MikKI3RyYWluX2NvbnRyb2wgPC0gdHJhaW5Db250cm9sKG1ldGhvZD0icmVwZWF0ZWRjdiIsIG51bWJlcj0xMCwgcmVwZWF0cz0zKQoKIyB0cmFpbiB0aGUgbW9kZWwKbW9kZWwgPC0gdHJhaW4oQ292ZXJfVHlwZX4uLGRhdGE9dHJhaW5pbmcsdHJDb250cm9sPXRyYWluX2NvbnRyb2wsIG1ldGhvZD0ieGdiVHJlZSIsdHVuZUdyaWQ9eGdiX2dyaWRfMSkKIyBzdW1tYXJpemUgcmVzdWx0cwpwcmludChtb2RlbCkKYGBgCkV2YWx1YXRlIHRoZSBtb2RlbCBwZXJmb3JtYW5jZSBvbiB0aGUgdGVzdGluZyBzZXQgOgoKYGBge3J9CnByZWRpY3Rpb248LXByZWRpY3QobW9kZWwsbmV3ZGF0YSA9IHRlc3RpbmcpCkNNPC10YWJsZShwcmVkaWN0aW9uLHRlc3RpbmckQ292ZXJfVHlwZSkKQ00KCnN1bShkaWFnKENNKSkvc3VtKENNKSoxMDAKYGBgCkNvbXB1dGUgc3VibWlzc2lvbgpgYGB7cn0KcHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsLG5ld2RhdGEgPSB0ZXN0X21hdHJpeCkKbGVuZ3RoKHByZWRpY3Rpb25fdGVzdCkKZGZfdGVzdCRDb3Zlcl9UeXBlPC1wcmVkaWN0aW9uX3Rlc3QKZGZfc3VibWlzc2lvbjwtIGRmX3Rlc3QgJT4lIHNlbGVjdChJZCxDb3Zlcl9UeXBlKQpoZWFkKGRmX3N1Ym1pc3Npb24pCndyaXRlLmNzdihkZl9zdWJtaXNzaW9uLCdzdWJtaXNzaW9uMy5jc3YnLHJvdy5uYW1lcz1GQUxTRSkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRm9yZXN0IENvdmVyIE1vZGVsIHNlbGVjdGlvbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCgpgYGB7cn0KbGlicmFyeShkcGx5cikKbGlicmFyeShnbG1uZXQpCmxpYnJhcnkoY2FyZXQpCmxpYnJhcnkoeGdib29zdCkKCmBgYAoKCmBgYHtyfQoKZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpCmRmX3Rlc3Q8LSByZWFkLmNzdignZGF0YS90ZXN0LmNzdicpCiN0ZXN0X21hdHJpeDwtZGdldCgnZGF0YS90ZXN0X3JlZHV4LnInKQoKCiMgY29udmVydCB0YXJnZXQgdG8gZmFjdG9yIHRvIGFjdGl2YXRlIGNsYXNzaWZpY2F0aW9uIGluIGNhcmV0IHRyYWluIG1ldGhvZCA6CmRmX3RyYWluJENvdmVyX1R5cGU8LWFzLmZhY3RvcihkZl90cmFpbiRDb3Zlcl9UeXBlKQoKYGBgCgojIyMjIFJlc3BsaXQgdGhlIHRyYWluIDoKYGBge3J9CmludHJhaW48LWNyZWF0ZURhdGFQYXJ0aXRpb24oeT1kZl90cmFpbiRDb3Zlcl9UeXBlLHA9MC43LGxpc3Q9RkFMU0UpCnRyYWluaW5nPC1kZl90cmFpbltpbnRyYWluLF0KdGVzdGluZzwtZGZfdHJhaW5bLWludHJhaW4sXQpgYGAKCkh5cGVycGFyYW1ldGVycyA6CgpgYGB7cn0KIyBzZXQgdXAgdGhlIGNyb3NzLXZhbGlkYXRlZCBoeXBlci1wYXJhbWV0ZXIgc2VhcmNoCnhnYl9ncmlkXzEgPSBleHBhbmQuZ3JpZChucm91bmRzPTIwLCBtYXhfZGVwdGg9MiwgZXRhPTAuMSwgZ2FtbWE9MSwgY29sc2FtcGxlX2J5dHJlZT0wLjQsIG1pbl9jaGlsZF93ZWlnaHQ9MSwgc3Vic2FtcGxlID0gMSkKeGdiX2dyaWRfMSA9IGV4cGFuZC5ncmlkKAogIG5yb3VuZHMgPSAxMDAwLAogIGV0YSA9IGMoMC4wMSwgMC4wMDEsIDAuMDAwMSksCiAgbWF4X2RlcHRoID0gYygyLCA0LCA2LCA4LCAxMCksCiAgZ2FtbWEgPSAxLAogIGNvbHNhbXBsZV9ieXRyZWU9MC40LCAKICBtaW5fY2hpbGRfd2VpZ2h0PTEsIAogIHN1YnNhbXBsZSA9IDEKKQpgYGAKCgpUcmFpbiB0aGUgCmBgYHtyfQoKIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbAp0cmFpbl9jb250cm9sIDwtIHRyYWluQ29udHJvbChtZXRob2Q9ImN2IiwgbnVtYmVyPTIpCiN0cmFpbl9jb250cm9sIDwtIHRyYWluQ29udHJvbChtZXRob2Q9InJlcGVhdGVkY3YiLCBudW1iZXI9MTAsIHJlcGVhdHM9MykKCiMgdHJhaW4gdGhlIG1vZGVsCm1vZGVsIDwtIHRyYWluKENvdmVyX1R5cGV+LixkYXRhPXRyYWluaW5nLHRyQ29udHJvbD10cmFpbl9jb250cm9sLCBtZXRob2Q9InhnYlRyZWUiLHR1bmVHcmlkPXhnYl9ncmlkXzEpCiMgc3VtbWFyaXplIHJlc3VsdHMKcHJpbnQobW9kZWwpCmRwdXQobW9kZWwkZmluYWxNb2RlbCwneGdiX2ZpbmFsX21vZGVsJykKYGBgCkV2YWx1YXRlIHRoZSBtb2RlbCBwZXJmb3JtYW5jZSBvbiB0aGUgdGVzdGluZyBzZXQgOgoKYGBge3J9CnByZWRpY3Rpb248LXByZWRpY3QobW9kZWwsbmV3ZGF0YSA9IHRlc3RpbmcpCkNNPC10YWJsZShwcmVkaWN0aW9uLHRlc3RpbmckQ292ZXJfVHlwZSkKQ00KCnN1bShkaWFnKENNKSkvc3VtKENNKSoxMDAKYGBgCkNvbXB1dGUgc3VibWlzc2lvbgpgYGB7cn0KcHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsLG5ld2RhdGEgPSBkZl90ZXN0KQpsZW5ndGgocHJlZGljdGlvbl90ZXN0KQpkZl90ZXN0JENvdmVyX1R5cGU8LXByZWRpY3Rpb25fdGVzdApkZl9zdWJtaXNzaW9uPC0gZGZfdGVzdCAlPiUgc2VsZWN0KElkLENvdmVyX1R5cGUpCmhlYWQoZGZfc3VibWlzc2lvbikKd3JpdGUuY3N2KGRmX3N1Ym1pc3Npb24sJ3N1Ym1pc3Npb24zLmNzdicscm93Lm5hbWVzPUZBTFNFKQpgYGAKCg==</div>
 
 
 
