@@ -174,57 +174,19 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZ2xtbmV0KVxubGlicmFyeShjYXJldClcbmxpYnJhcnkoeGdib29zdClcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)
+library(glmnet)
+library(caret)
+library(xgboost)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
-<pre><code>
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnbG1uZXQpXG5gYGAifQ== -->
-<pre class="r"><code>library(glmnet)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNYXRyaXhcbkxvYWRpbmcgcmVxdWlyZWQgcGFja2FnZTogZm9yZWFjaFxuZm9yZWFjaDogc2ltcGxlLCBzY2FsYWJsZSBwYXJhbGxlbCBwcm9ncmFtbWluZyBmcm9tIFJldm9sdXRpb24gQW5hbHl0aWNzXG5Vc2UgUmV2b2x1dGlvbiBSIGZvciBzY2FsYWJpbGl0eSwgZmF1bHQgdG9sZXJhbmNlIGFuZCBtb3JlLlxuaHR0cDovL3d3dy5yZXZvbHV0aW9uYW5hbHl0aWNzLmNvbVxuTG9hZGVkIGdsbW5ldCAyLjAtNVxuIn0= -->
-<pre><code>Loading required package: Matrix
-Loading required package: foreach
-foreach: simple, scalable parallel programming from Revolution Analytics
-Use Revolution R for scalability, fault tolerance and more.
-http://www.revolutionanalytics.com
-Loaded glmnet 2.0-5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmBgYCJ9 -->
-<pre class="r"><code>library(caret)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsYXR0aWNlXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGdncGxvdDJcbiJ9 -->
-<pre><code>Loading required package: lattice
-Loading required package: ggplot2</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh4Z2Jvb3N0KVxuYGBgIn0= -->
-<pre class="r"><code>library(xgboost)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYeGdib29zdOKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmRwbHly4oCZOlxuXG4gICAgc2xpY2VcbiJ9 -->
-<pre><code>
-Attaching package: ‘xgboost’
-
-The following object is masked from ‘package:dplyr’:
-
-    slice</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpXG4jZGZfdGVzdDwtIHJlYWQuY3N2KCdkYXRhL3Rlc3QuY3N2JylcbiN0ZXN0X21hdHJpeDwtZGdldCgnZGF0YS90ZXN0X3JlZHV4LnInKVxuIyBjb252ZXJ0IHRhcmdldCB0byBmYWN0b3IgdG8gYWN0aXZhdGUgY2xhc3NpZmljYXRpb24gaW4gY2FyZXQgdHJhaW4gbWV0aG9kIDpcbmRmX3RyYWluJENvdmVyX1R5cGU8LWFzLmZhY3RvcihkZl90cmFpbiRDb3Zlcl9UeXBlKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdHJhaW48LXJlYWQuY3N2KCdkYXRhL3RyYWluLmNzdicpXG5kZl90ZXN0PC0gcmVhZC5jc3YoJ2RhdGEvdGVzdC5jc3YnKVxuI3Rlc3RfbWF0cml4PC1kZ2V0KCdkYXRhL3Rlc3RfcmVkdXgucicpXG4jIGNvbnZlcnQgdGFyZ2V0IHRvIGZhY3RvciB0byBhY3RpdmF0ZSBjbGFzc2lmaWNhdGlvbiBpbiBjYXJldCB0cmFpbiBtZXRob2QgOlxuZGZfdHJhaW4kQ292ZXJfVHlwZTwtYXMuZmFjdG9yKGRmX3RyYWluJENvdmVyX1R5cGUpXG5gYGAifQ== -->
 <pre class="r"><code>df_train&lt;-read.csv('data/train.csv')
-#df_test&lt;- read.csv('data/test.csv')
+df_test&lt;- read.csv('data/test.csv')
 #test_matrix&lt;-dget('data/test_redux.r')
 # convert target to factor to activate classification in caret train method :
 df_train$Cover_Type&lt;-as.factor(df_train$Cover_Type)</code></pre>
@@ -263,27 +225,56 @@ xgb_grid_1 = expand.grid(
 <p>Train the</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbFxudHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwiY3ZcIiwgbnVtYmVyPTIpXG4jdHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwicmVwZWF0ZWRjdlwiLCBudW1iZXI9MTAsIHJlcGVhdHM9MylcbiMgdHJhaW4gdGhlIG1vZGVsXG5tb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sZGF0YT10cmFpbmluZyx0ckNvbnRyb2w9dHJhaW5fY29udHJvbCwgbWV0aG9kPVwieGdiVHJlZVwiLHR1bmVHcmlkPXhnYl9ncmlkXzEpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkZWZpbmUgdHJhaW5pbmcgY29udHJvbFxudHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwiY3ZcIiwgbnVtYmVyPTIpXG4jdHJhaW5fY29udHJvbCA8LSB0cmFpbkNvbnRyb2wobWV0aG9kPVwicmVwZWF0ZWRjdlwiLCBudW1iZXI9MTAsIHJlcGVhdHM9MylcbiMgdHJhaW4gdGhlIG1vZGVsXG5tb2RlbCA8LSB0cmFpbihDb3Zlcl9UeXBlfi4sZGF0YT10cmFpbmluZyx0ckNvbnRyb2w9dHJhaW5fY29udHJvbCwgbWV0aG9kPVwieGdiVHJlZVwiLHR1bmVHcmlkPXhnYl9ncmlkXzEpXG4jIHN1bW1hcml6ZSByZXN1bHRzXG5wcmludChtb2RlbClcbmBgYCJ9 -->
 <pre class="r"><code># define training control
 train_control &lt;- trainControl(method=&quot;cv&quot;, number=2)
 #train_control &lt;- trainControl(method=&quot;repeatedcv&quot;, number=10, repeats=3)
 # train the model
-model &lt;- train(Cover_Type~.,data=training,trControl=train_control, method=&quot;xgbTree&quot;,tuneGrid=xgb_grid_1)</code></pre>
+model &lt;- train(Cover_Type~.,data=training,trControl=train_control, method=&quot;xgbTree&quot;,tuneGrid=xgb_grid_1)
+# summarize results
+print(model)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBwbHlyXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbllvdSBoYXZlIGxvYWRlZCBwbHlyIGFmdGVyIGRwbHlyIC0gdGhpcyBpcyBsaWtlbHkgdG8gY2F1c2UgcHJvYmxlbXMuXG5JZiB5b3UgbmVlZCBmdW5jdGlvbnMgZnJvbSBib3RoIHBseXIgYW5kIGRwbHlyLCBwbGVhc2UgbG9hZCBwbHlyIGZpcnN0LCB0aGVuIGRwbHlyOlxubGlicmFyeShwbHlyKTsgbGlicmFyeShkcGx5cilcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYcGx5cuKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6ZHBseXLigJk6XG5cbiAgICBhcnJhbmdlLCBjb3VudCwgZGVzYywgZmFpbHdpdGgsIGlkLCBtdXRhdGUsIHJlbmFtZSwgc3VtbWFyaXNlLCBzdW1tYXJpemVcbiJ9 -->
-<pre><code>Loading required package: plyr
----------------------------------------------------------------------------------------------------------------------
-You have loaded plyr after dplyr - this is likely to cause problems.
-If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-library(plyr); library(dplyr)
----------------------------------------------------------------------------------------------------------------------
+<!-- rnb-output-begin eyJkYXRhIjoiZVh0cmVtZSBHcmFkaWVudCBCb29zdGluZyBcblxuMTA1ODQgc2FtcGxlc1xuICAgNTUgcHJlZGljdG9yc1xuICAgIDcgY2xhc3NlczogJzEnLCAnMicsICczJywgJzQnLCAnNScsICc2JywgJzcnIFxuXG5ObyBwcmUtcHJvY2Vzc2luZ1xuUmVzYW1wbGluZzogQ3Jvc3MtVmFsaWRhdGVkICgyIGZvbGQpIFxuU3VtbWFyeSBvZiBzYW1wbGUgc2l6ZXM6IDUyOTIsIDUyOTIgXG5SZXNhbXBsaW5nIHJlc3VsdHMgYWNyb3NzIHR1bmluZyBwYXJhbWV0ZXJzOlxuXG4gIGV0YSAgICBtYXhfZGVwdGggIEFjY3VyYWN5ICAgS2FwcGEgICAgXG4gIDFlLTA0ICAgMiAgICAgICAgIDAuNjcwNTQwNCAgMC42MTU2MzA1XG4gIDFlLTA0ICAgNCAgICAgICAgIDAuNzI5NDAyOSAgMC42ODQzMDM0XG4gIDFlLTA0ICAgNiAgICAgICAgIDAuNzY3NzYyNyAgMC43MjkwNTY0XG4gIDFlLTA0ICAgOCAgICAgICAgIDAuNzk0NjkwMSAgMC43NjA0NzE4XG4gIDFlLTA0ICAxMCAgICAgICAgIDAuODA5MTQ1OSAgMC43NzczMzY5XG4gIDFlLTAzICAgMiAgICAgICAgIDAuNjc0OTgxMSAgMC42MjA4MTEzXG4gIDFlLTAzICAgNCAgICAgICAgIDAuNzM4MTg5NyAgMC42OTQ1NTQ3XG4gIDFlLTAzICAgNiAgICAgICAgIDAuNzgyMTI0MCAgMC43NDU4MTEzXG4gIDFlLTAzICAgOCAgICAgICAgIDAuODA3NzI4NiAgMC43NzU2ODM0XG4gIDFlLTAzICAxMCAgICAgICAgIDAuODE5NTM4OSAgMC43ODk0NjIxXG4gIDFlLTAyICAgMiAgICAgICAgIDAuNzIzODI4NCAgMC42Nzc3OTk4XG4gIDFlLTAyICAgNCAgICAgICAgIDAuNzg5ODcxNSAgMC43NTQ4NTAxXG4gIDFlLTAyICAgNiAgICAgICAgIDAuODIxMjM5NiAgMC43OTE0NDYyXG4gIDFlLTAyICAgOCAgICAgICAgIDAuODMyNjcyMCAgMC44MDQ3ODQwXG4gIDFlLTAyICAxMCAgICAgICAgIDAuODM4ODEzMyAgMC44MTE5NDg5XG5cblR1bmluZyBwYXJhbWV0ZXIgJ25yb3VuZHMnIHdhcyBoZWxkIGNvbnN0YW50IGF0IGEgdmFsdWUgb2YgMTAwMFxuVHVuaW5nIHBhcmFtZXRlciAnZ2FtbWEnIHdhcyBoZWxkIGNvbnN0YW50IGF0IGFcbiBwYXJhbWV0ZXIgJ21pbl9jaGlsZF93ZWlnaHQnIHdhcyBoZWxkIGNvbnN0YW50IGF0IGEgdmFsdWUgb2YgMVxuVHVuaW5nIHBhcmFtZXRlciAnc3Vic2FtcGxlJyB3YXMgaGVsZCBjb25zdGFudCBhdFxuIGEgdmFsdWUgb2YgMVxuQWNjdXJhY3kgd2FzIHVzZWQgdG8gc2VsZWN0IHRoZSBvcHRpbWFsIG1vZGVsIHVzaW5nICB0aGUgbGFyZ2VzdCB2YWx1ZS5cblRoZSBmaW5hbCB2YWx1ZXMgdXNlZCBmb3IgdGhlIG1vZGVsIHdlcmUgbnJvdW5kcyA9IDEwMDAsIG1heF9kZXB0aCA9IDEwLCBldGEgPSAwLjAxLCBnYW1tYSA9IDEsIGNvbHNhbXBsZV9ieXRyZWVcbiA9IDAuNCwgbWluX2NoaWxkX3dlaWdodCA9IDEgYW5kIHN1YnNhbXBsZSA9IDEuIFxuIn0= -->
+<pre><code>eXtreme Gradient Boosting 
 
-Attaching package: ‘plyr’
+10584 samples
+   55 predictors
+    7 classes: '1', '2', '3', '4', '5', '6', '7' 
 
-The following objects are masked from ‘package:dplyr’:
+No pre-processing
+Resampling: Cross-Validated (2 fold) 
+Summary of sample sizes: 5292, 5292 
+Resampling results across tuning parameters:
 
-    arrange, count, desc, failwith, id, mutate, rename, summarise, summarize</code></pre>
+  eta    max_depth  Accuracy   Kappa    
+  1e-04   2         0.6705404  0.6156305
+  1e-04   4         0.7294029  0.6843034
+  1e-04   6         0.7677627  0.7290564
+  1e-04   8         0.7946901  0.7604718
+  1e-04  10         0.8091459  0.7773369
+  1e-03   2         0.6749811  0.6208113
+  1e-03   4         0.7381897  0.6945547
+  1e-03   6         0.7821240  0.7458113
+  1e-03   8         0.8077286  0.7756834
+  1e-03  10         0.8195389  0.7894621
+  1e-02   2         0.7238284  0.6777998
+  1e-02   4         0.7898715  0.7548501
+  1e-02   6         0.8212396  0.7914462
+  1e-02   8         0.8326720  0.8047840
+  1e-02  10         0.8388133  0.8119489
+
+Tuning parameter 'nrounds' was held constant at a value of 1000
+Tuning parameter 'gamma' was held constant at a
+ parameter 'min_child_weight' was held constant at a value of 1
+Tuning parameter 'subsample' was held constant at
+ a value of 1
+Accuracy was used to select the optimal model using  the largest value.
+The final values used for the model were nrounds = 1000, max_depth = 10, eta = 0.01, gamma = 1, colsample_bytree
+ = 0.4, min_child_weight = 1 and subsample = 1. </code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZHB1dChtb2RlbCRmaW5hbE1vZGVsLCd4Z2JfZmluYWxfbW9kZWwnKVxuYGBgIn0= -->
+<pre class="r"><code>dput(model$finalModel,'xgb_final_model')</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Evaluate the model performance on the testing set :</p>
@@ -294,35 +285,50 @@ The following objects are masked from ‘package:dplyr’:
 CM&lt;-table(prediction,testing$Cover_Type)
 CM</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgIFxucHJlZGljdGlvbiAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDdcbiAgICAgICAgIDEgNTA3ICA5NSAgIDAgICAwICAgMCAgIDAgIDI2XG4gICAgICAgICAyICA5NSA0NzUgICA5ICAgMCAgMTcgICA1ICAgMFxuICAgICAgICAgMyAgIDAgIDExIDU0NCAgIDkgICA3ICA0OSAgIDBcbiAgICAgICAgIDQgICAwICAgMCAgMzAgNjMzICAgMCAgMTIgICAwXG4gICAgICAgICA1ICAxMCAgNDkgIDEwICAgMCA2MTUgICA0ICAgMFxuICAgICAgICAgNiAgIDEgIDEyICA1NSAgIDYgICA5IDU3OCAgIDBcbiAgICAgICAgIDcgIDM1ICAgNiAgIDAgICAwICAgMCAgIDAgNjIyXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgIFxucHJlZGljdGlvbiAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDdcbiAgICAgICAgIDEgNTE0IDE0MiAgIDAgICAwICAgMiAgIDAgIDEzXG4gICAgICAgICAyICA4OCA0NDEgICAyICAgMCAgMTQgICA1ICAgMlxuICAgICAgICAgMyAgIDAgICA3IDU0NiAgIDUgIDEwICA0OCAgIDBcbiAgICAgICAgIDQgICAwICAgMCAgMjggNjMxICAgMCAgMTcgICAwXG4gICAgICAgICA1ICAgOSAgNDggIDEyICAgMCA2MTMgICA0ICAgMVxuICAgICAgICAgNiAgIDEgICA5ICA2MCAgMTIgICA5IDU3NCAgIDBcbiAgICAgICAgIDcgIDM2ICAgMSAgIDAgICAwICAgMCAgIDAgNjMyXG4ifQ== -->
 <pre><code>          
 prediction   1   2   3   4   5   6   7
-         1 507  95   0   0   0   0  26
-         2  95 475   9   0  17   5   0
-         3   0  11 544   9   7  49   0
-         4   0   0  30 633   0  12   0
-         5  10  49  10   0 615   4   0
-         6   1  12  55   6   9 578   0
-         7  35   6   0   0   0   0 622</code></pre>
+         1 514 142   0   0   2   0  13
+         2  88 441   2   0  14   5   2
+         3   0   7 546   5  10  48   0
+         4   0   0  28 631   0  17   0
+         5   9  48  12   0 613   4   1
+         6   1   9  60  12   9 574   0
+         7  36   1   0   0   0   0 632</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGRpYWcoQ00pKS9zdW0oQ00pKjEwMFxuYGBgIn0= -->
 <pre class="r"><code>sum(diag(CM))/sum(CM)*100</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDg3LjYxMDIzXG4ifQ== -->
-<pre><code>[1] 87.61023</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDg3LjEwMzE3XG4ifQ== -->
+<pre><code>[1] 87.10317</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Compute submission</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsLG5ld2RhdGEgPSB0ZXN0X21hdHJpeClcbmBgYCJ9 -->
-<pre class="r"><code>prediction_test&lt;-predict(model,newdata = test_matrix)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdGlvbl90ZXN0PC1wcmVkaWN0KG1vZGVsLG5ld2RhdGEgPSBkZl90ZXN0KVxubGVuZ3RoKHByZWRpY3Rpb25fdGVzdClcbmBgYCJ9 -->
+<pre class="r"><code>prediction_test&lt;-predict(model,newdata = df_test)
+length(prediction_test)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcHJlZGljdC50cmFpbihtb2RlbCwgbmV3ZGF0YSA9IHRlc3RfbWF0cml4KSA6IFxuICBvYmplY3QgJ3Rlc3RfbWF0cml4JyBub3QgZm91bmRcbiJ9 -->
-<pre><code>Error in predict.train(model, newdata = test_matrix) : 
-  object 'test_matrix' not found</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDU2NTg5MlxuIn0= -->
+<pre><code>[1] 565892</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdGVzdCRDb3Zlcl9UeXBlPC1wcmVkaWN0aW9uX3Rlc3RcbmRmX3N1Ym1pc3Npb248LSBkZl90ZXN0ICU+JSBzZWxlY3QoSWQsQ292ZXJfVHlwZSlcbmhlYWQoZGZfc3VibWlzc2lvbilcbmBgYCJ9 -->
+<pre class="r"><code>df_test$Cover_Type&lt;-prediction_test
+df_submission&lt;- df_test %&gt;% select(Id,Cover_Type)
+head(df_submission)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6Nn0sInJkZiI6Ikg0c0lBQUFBQUFBQUEyMlFUVS9ETUF5RzNmUmpXcVh4TmVCZnJCTGpZNGNkMllVcjJtRTNGTm9NS2tKU3BkbUFHNzk4NExReDJpSXF2YzFUOTdVZCszR3htdWFySEFBWXhERURGaU1tREY4UkpEQjA1eWRBUE80TUFDTlVCakEvUloyaE1ENC9SMTJnTHRIbi8yTnk3NDhPZFZBNGsySXJaSXQwZ2hwUXV5dUNLY0Uxd1EzQkxjRWR3U3dvbnBhU3QxVDdyK09hbDFZYnBGMW9WL3hka0ozNUlIdW9QT1gzZWl2TTAvS3JFVUhpME9pUGdwTGQ5T3didWlmcmpmRlBjSWU4NHBZWGE0TXAvOXhqb0J0YmE0WEZtRnQ1R2lSSEpnZ2NiNVJyWGszSzE0MTZtOHhjZzcyVmoveVo3VEhyV3laMHNaU1dJOVJMclFRdFJQSm5JZjNIRVE3WnpWZzBwbGFXSnNGb1cxaHRPZm55VWt1S2RMUEI3aGVSejJyRFlBSUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Id"],"name":[1],"type":["int"],"align":["right"]},{"label":["Cover_Type"],"name":[2],"type":["fctr"],"align":["left"]}],"data":[{"1":"15121","2":"1","_rn_":"1"},{"1":"15122","2":"2","_rn_":"2"},{"1":"15123","2":"1","_rn_":"3"},{"1":"15124","2":"1","_rn_":"4"},{"1":"15125","2":"1","_rn_":"5"},{"1":"15126","2":"1","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGUuY3N2KGRmX3N1Ym1pc3Npb24sJ3N1Ym1pc3Npb24zLmNzdicscm93Lm5hbWVzPUZBTFNFKVxuYGBgIn0= -->
+<pre class="r"><code>write.csv(df_submission,'submission3.csv',row.names=FALSE)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
