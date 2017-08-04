@@ -4,3 +4,4 @@
 .Ruserdata
 /bosch_production_line/data/*.*
 /bike_sharing_demand/data/*.*
+*.csv
